@@ -1,0 +1,38 @@
+package Visites;
+import static org.junit.Assert.assertTrue;
+
+import java.util.Arrays;
+import java.util.Collection;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runners.Parameterized.Parameters;
+
+
+public class TestEtape {
+	
+	Etape e1;
+	Etape e2;
+	
+	@Parameters
+	public static Collection data(){
+		return Arrays.asList(new Object[][]{
+			{"polonaise inversée","rue du langage formel", 5,NatureEtape.musee},
+			{"polonaise pas ouf","rue de la Pologne", 0,NatureEtape.lieuInteretSansVisite}
+		});
+	}
+	
+	@Before
+	public void setUp() throws Exception{
+		e1 = new Etape("polonaise inversée","rue du langage formel", 5,NatureEtape.musee);
+		e2 = new Etape("polonaise pas ouf","rue de la Pologne", 0,NatureEtape.lieuInteretSansVisite);
+	}
+	
+	@Test
+	public void TestEtapeCorrecte(){
+		assertTrue(e1.estCorrecte());
+		assertTrue(e2.estCorrecte());
+		
+	}
+
+}
