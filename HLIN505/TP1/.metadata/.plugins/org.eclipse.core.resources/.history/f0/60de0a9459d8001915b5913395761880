@@ -1,0 +1,62 @@
+package cercleSportif;
+
+public class HeureSimple {
+	private static int granularite = 5;
+	private static int heureMax = 22;
+	private static int heureMin = 7;
+	private int heure;
+	private int minute;
+	
+	public int getHeure() {
+		return heure;
+	}
+	public void setHeure(int heure) {
+		this.heure = heure;
+	}
+	public int getMinute() {
+		return minute;
+	}
+	public void setMinute(int minute) {
+		this.minute = minute;
+	}
+	public boolean heureCorrecte(int h){
+		return (h>heureMin && h<heureMax);
+	}
+	public boolean minuteCorrecte(int m){
+		return (m<60 && m%granularite==0);	
+				}
+	public boolean tempsCorrect(int h, int m){
+		return (heureCorrecte(h) && minuteCorrecte(m));	
+				}
+	public HeureSimple(int heure, int minute) {
+		this.heure=heure;
+		this.minute=minute;
+	}
+	
+	public boolean estStrictementAvant(HeureSimple h) {
+		boolean res=false;
+		if(heure<h.getHeure()) {
+			res=true;
+		}
+		else if(heure==h.getHeure()) {
+			if(minute<h.getMinute()) {
+				res=true;
+			}
+		}
+		return res;
+	}
+	
+	public String toString(){
+		String h=Integer.toString(heure);
+		String m=Integer.toString(minute);
+		if(tempsCorrect(heure,minute)) {
+			if(heure<10) h="0"+h;
+			if(minute<10) m="0"+m;
+		return h+":"+m;
+		}
+		else {
+			return "ERROR";
+		}
+	}
+
+}

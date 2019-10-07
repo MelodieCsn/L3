@@ -1,0 +1,13 @@
+package Expressions;
+
+public class main {
+	public static void main(String[] args) {
+	Constante a=new Constante (3);
+	Constante b=new Constante (4);
+	char op = '+';
+	ExpressionComplexe e= new ExpressionComplexe(a,op,b);
+//	
+//	Object o = new Constante(7);
+//	System.out.println(e.eval().o);
+	}
+}

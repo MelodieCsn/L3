@@ -1,0 +1,9 @@
+
+public class HeureSimple {
+	private static int granularite = 5;
+	private static int HeureMax = 22;
+	private static int HeureMin = 7;
+	private int heure;
+	private int minute;
+	
+}

@@ -1,0 +1,49 @@
+a
+{
+    color: dimgrey;
+}
+
+h1{
+    color : rgb(161, 65, 48); 
+}
+h2{
+    color : lightsalmon;
+}
+.menu{
+    /*border: 1px solid black;*/
+    float : left;
+    width : 14%;
+}
+
+.contenu{
+    /* border: 1px solid black;*/
+    margin-left: 16%;
+    margin-bottom: 3%;
+
+}
+
+body{
+    background-color: papayawhip;
+}
+
+.tableau,th,td{
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+    padding : 10px;
+}
+
+.trait
+{
+background-color: dimgrey;
+height: 1pt;
+width: 100%;
+}
+
+.bataille{
+    margin-left:40%;
+}
+
+.batailleN{
+    margin-bottom: 3%
+}

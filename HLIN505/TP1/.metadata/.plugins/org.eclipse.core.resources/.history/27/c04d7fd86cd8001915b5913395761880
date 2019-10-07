@@ -1,0 +1,62 @@
+package Expressions;
+
+public class ExpressionComplexe extends Nombre{
+	private Nombre a;
+	private char op;
+	private Nombre b;
+	
+	public ExpressionComplexe(Constante a, char op, Constante b){
+		this.a=a;
+		this.b=b;
+		this.op=op;
+	}
+	
+	public String toString(){
+		return a.toString()+op+b.toString();
+	}
+	public Nombre eval(){
+		Nombre res = 0;
+		switch (op) {
+		case '+':
+			res=a.getNb()+b.getNb();
+			break;
+		case '-':
+			res=a.getNb()-b.getNb();
+			break;
+		case '*':
+			res=a.getNb()*b.getNb();
+			break;
+		case '/':
+			res=a.getNb()/b.getNb();
+			break;
+
+		default:
+			break;
+		}
+		return res;
+	}
+
+	public Constante getA() {
+		return a;
+	}
+
+	public void setA(Constante a) {
+		this.a = a;
+	}
+
+	public char getOp() {
+		return op;
+	}
+
+	public void setOp(char op) {
+		this.op = op;
+	}
+
+	public Constante getB() {
+		return b;
+	}
+
+	public void setB(Constante b) {
+		this.b = b;
+	}
+}

@@ -1,0 +1,20 @@
+package Expressions;
+
+public class Constante {
+	private double nb;
+	
+	public Constante(int nb){
+		this.nb=nb;
+	}
+	public String toString(){
+		return nb+"";
+	}
+	
+	public double getNb() {
+		return nb;
+	}
+	public void setNb(double nb) {
+		this.nb = nb;
+	}
+
+}

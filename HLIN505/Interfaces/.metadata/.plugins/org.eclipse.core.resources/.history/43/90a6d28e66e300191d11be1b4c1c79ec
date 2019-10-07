@@ -1,0 +1,13 @@
+
+public  abstract class AbstractAudioElement implements ElementAudio{
+	private int duration;
+	private String title;
+	private String location;
+	private long size;
+	public int getDuration() {
+		return duration;
+	}
+	public void setDuration(int duration) {
+		this.duration = duration;
+	}
+}

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>INFOCOM vente de matériel informatique</title>
+        <link rel="stylesheet" href="Style.css" />
+        <script type="text/javascript" src="index.js"></script>
+        <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    </head>
+
+    <body>
+        <header> 
+            <h1>INFOCOM : vente de matériel informatique</h1>
+
+        </header>
+        <div class="trait"></div>
+        <div class="menu"> 
+            <ul> <li> <a href="#">Disques durs</a> </li> 
+                <li><a href="#">Calviers et souris</a></li>
+                <li><a href="#divers">Divers</a></li>
+            </ul>
+            
+        </div> 
+
+        <div class="contenu">   
+            <div>
+                <h2>Disques durs</h2>
+                <table class="tableau">
+                    <tr>
+                        <td>Produits</td> 
+                        <td>Prix</td>
+                        <td>Description</td>
+
+                    </tr>
+                    <tr>
+                            <td>disque1</td> 
+                            <td>200 euros</td>
+                            <td>SSD</td>
+    
+                        </tr>
+                </table>
+            </div> 
+
+            <div>
+                    <h2>Claviers et souris</h2>
+                    <table class="tableau">
+                        <tr>
+                            <td>Produits</td> 
+                            <td>Prix</td>
+                            <td>Description</td>
+    
+                        </tr>
+                        <tr>
+                                <td>souris1</td> 
+                                <td>30 euros</td>
+                                <td>laser</td>
+        
+                            </tr>
+                    </table>
+            </div> 
+            <div>
+                        <h2 id="divers">Divers</h2>
+                        <table class="tableau">
+                            <tr>
+                                <td>Produits</td> 
+                                <td>Prix</td>
+                                <td>Description</td>
+        
+                            </tr>
+                            <tr>
+                                    <td>ecran</td> 
+                                    <td>3000 euros</td>
+                                    <td>HD</td>
+            
+                                </tr>
+                        </table>
+            </div>     
+        </div>
+
+        <script>
+            let i
+            for(i=0;i<5;i++){
+                console.log("Hello World :" + i)
+            }
+        
+        </script>
+<div class="trait"></div>
+<h2>Formulaire de commande</h2>    
+<form>
+    <p>
+        <label>Quantité de disques durs</label> : <input type="number" name="pseudo" placeholder="nb disques" /> </br>
+        <label for="DD">Quel disque dur souhaitez-vous ?</label>
+        <select name="Choix Disque dur" id="ChoixDD">
+            <option value="DD1">DD1</option>
+            <option value="DD2">DD2</option>
+            <option value="DD4">DD3</option>    
+        </select> </br>
+        <label for="clavier">Clavier</label><input type="checkbox" name="choix" /> 
+        <label for="clavier">Souris</label><input type="checkbox" name="choix" />
+        <label for="clavier et souris sans fil">Clavier</label><input type="checkbox" name="choix" /> </br>
+        <label>Adresse email</label> : <input type="text" name="pseudo"  placeholder="Saisissez email"/> </br>
+        <label>Nom</label>: <input required type="text" name="pseudo" pattern="[A-Z]*"  placeholder="Nom en majuscule"/></br>
+        <input value="Commander" type="submit"> </input>
+    </p>    
+ </form>
+
+ <div class="trait"></div>
+ <div class="batailleN">
+ <h2>Bataille navale</h2>
+                <table class="bataille">
+                    <tr>
+                        <td></td> 
+                        <td>A</td>
+                        <td>B</td>
+                        <td>C</td>
+                        <td>D</td>
+                        <td>E</td>
+
+                    </tr>
+                    <tr>
+                            <td>1</td> 
+                            <td><input id="1" type="button" value="???" onclick=plouf(this.id)> </td>
+                            <td><input id="" type="button" value="???" onclick="~~~"> </td>
+                            <td><input type="button" value="???" onclick="~~~"> </td>
+                            <td><input type="button" value="???" onclick="BOUM"> </td>
+                            <td><input type="button" value="???" onclick="~~~"> </td>
+    
+                    </tr>
+                    <tr>
+                            <td>2</td> 
+                            <td><input id="1" type="button" value="???" onclick=plouf(this.id)> </td>
+                            <td><input id="" type="button" value="???" onclick="~~~"> </td>
+                            <td><input type="button" value="???" onclick="~~~"> </td>
+                            <td><input type="button" value="???" onclick="BOUM"> </td>
+                            <td><input type="button" value="???" onclick="~~~"> </td>
+    
+                    </tr>
+                    <tr>
+                            <td>3</td> 
+                            <td><input id="1" type="button" value="???" onclick=plouf(this.id)> </td>
+                            <td><input id="" type="button" value="???" onclick="~~~"> </td>
+                            <td><input type="button" value="???" onclick="~~~"> </td>
+                            <td><input type="button" value="???" onclick="BOUM"> </td>
+                            <td><input type="button" value="???" onclick="~~~"> </td>
+    
+                    </tr>
+                    <tr>
+                            <td>4</td> 
+                            <td><input id="1" type="button" value="???" onclick=plouf(this.id)> </td>
+                            <td><input id="" type="button" value="???" onclick="~~~"> </td>
+                            <td><input type="button" value="???" onclick="~~~"> </td>
+                            <td><input type="button" value="???" onclick="BOUM"> </td>
+                            <td><input type="button" value="???" onclick="~~~"> </td>
+                    </tr>
+                    <tr>
+                            <td>5</td> 
+                            <td><input id="1" type="button" value="???" onclick=plouf(this.id)> </td>
+                            <td><input id="" type="button" value="???" onclick="~~~"> </td>
+                            <td><input type="button" value="???" onclick="~~~"> </td>
+                            <td><input type="button" value="???" onclick="BOUM"> </td>
+                            <td><input type="button" value="???" onclick="~~~"> </td>
+    
+                    </tr>
+                </table>
+            </div> 
+
+        </div>
+<div class="trait"></div>
+
+
+        <footer>
+            <h1>INFOCOM le leader de la vente de matériel informatique et conditions d'utilisation</h1>
+            <a href="https://moodle.umontpellier.fr/pluginfile.php/417791/mod_resource/content/2/tdtp%20%281%29.pdf">Conditions d'utilisation</a>
+        </footer>
+    </body>
+</html>

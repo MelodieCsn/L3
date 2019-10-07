@@ -1,0 +1,7 @@
+
+public  abstract class AbstractAudioElement implements ElementAudio{
+	private int duration;
+	private String title;
+	private String location;
+	private long size;
+}

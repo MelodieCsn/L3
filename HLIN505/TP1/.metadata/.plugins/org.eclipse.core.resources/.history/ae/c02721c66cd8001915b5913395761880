@@ -1,0 +1,6 @@
+package Expressions;
+
+public abstract class Nombre {
+	private Nombre nombre;
+	public Nombre eval(){return nombre;}
+}

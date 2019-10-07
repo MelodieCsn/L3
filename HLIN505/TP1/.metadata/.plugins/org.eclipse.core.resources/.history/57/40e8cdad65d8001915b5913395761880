@@ -1,0 +1,17 @@
+package Expressions;
+
+public class ExpressionComplexe {
+	private Constante a;
+	private char op;
+	private Constante b;
+	
+	public ExpressionComplexe(Constante a, char op, Constante b){
+		this.a=a;
+		this.b=b;
+		this.op=op;
+	}
+	
+	public String toString(){
+		return a.toString()+op+b.toString();
+	}
+}

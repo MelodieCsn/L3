@@ -1,0 +1,27 @@
+
+public class HeureSimple {
+	private static int granularite = 5;
+	private static int heureMax = 22;
+	private static int heureMin = 7;
+	private int heure;
+	private int minute;
+	
+	public int getHeure() {
+		return heure;
+	}
+	public void setHeure(int heure) {
+		this.heure = heure;
+	}
+	public int getMinute() {
+		return minute;
+	}
+	public void setMinute(int minute) {
+		this.minute = minute;
+	}
+	public boolean heureCorrecte(int h){
+		return (h>heureMin && h<heureMax);
+	}
+	public boolean minuteCorrecte(int m){
+		return (m<60 && m%granularite==0);	
+				}
+}

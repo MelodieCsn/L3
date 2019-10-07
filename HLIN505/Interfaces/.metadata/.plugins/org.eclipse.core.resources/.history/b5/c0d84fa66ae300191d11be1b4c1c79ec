@@ -1,0 +1,9 @@
+
+public class Song extends AbstractAudioElement{
+	private String singer;
+	private int duration;
+	
+	public Song(int duration, String title, String filelocation, String singer){
+		super(title, fileLocation);
+	}
+}

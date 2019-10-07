@@ -1,0 +1,13 @@
+package Expressions;
+
+public class Constante {
+	private int nb;
+	
+	public Constante(int nb){
+		this.nb=nb;
+	}
+	public String toString(){
+		return nb+"";
+	}
+
+}

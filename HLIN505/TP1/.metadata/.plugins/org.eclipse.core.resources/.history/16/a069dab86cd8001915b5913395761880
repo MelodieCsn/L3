@@ -1,0 +1,24 @@
+package Expressions;
+
+public class Constante extends Nombre{
+	private Nombre nb;
+	
+	public Constante(Nombre nb){
+		this.nb=nb;
+	}
+	public String toString(){
+		return nb+"";
+	}
+	
+	public Nombre getNb() {
+		return nb;
+	}
+	public void setNb(Nombre nb) {
+		this.nb = nb;
+	}
+	
+	public Nombre eval(){
+		return nb;
+	}
+
+}
