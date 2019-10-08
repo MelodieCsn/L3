@@ -43,7 +43,7 @@ void grapheRandomv2(int n, int m, int edgy[][2]){
   }  
 }
 
-void composantes(int n, int m, int edgy[][2], int comp[]){
+void composantes(int n, int m, int edgy[][2], int comp[]){ //non optimisé
   int compi=0;
   int compj=0;
   for(int i=0;i<n;i++) {
@@ -54,71 +54,60 @@ void composantes(int n, int m, int edgy[][2], int comp[]){
     compi=comp[edgy[j][0]];
     compj=comp[edgy[j][1]];
     if(compi!=compj){
-      
-      if(compi<=compj){
-        
-      	for(int k=0;k<n;k++){
-      	  if(comp[k]==compi){
-            comp[k]=compj;
-          }
-        }
-      }
-      
-      else{
-      	for(int k=0;k<n;k++){
-      	  if(comp[k]==compj){
-      	    comp[k]=compi;
+      int aux=compi;
+      for(int k=0;k<n;k++){
+      	if(comp[k]==aux){
+      	  comp[k]=compj;
           }
         }
       }
     }
-  }
   for(int l=0;l<n;l++){
     cout<<"comp("<<l<<")="<<comp[l]<<endl;
   }
 }
 
-void composantes2(int n, int m, int edgy[][2], int comp[]){
-  int compi=0;
-  int compj=0;
-  vector<vector<int> > sommets(n);
-  for(int i=0;i<n;i++) {
-    comp[i]=i;
-    vector<int> v; 
-    v.push_back(i);
-    sommets[i] = v;
-  }
+// void composantes2(int n, int m, int edgy[][2], int comp[]){
+//   int compi=0;
+//   int compj=0;
+//   vector<vector<int> > sommets(n);
+//   for(int i=0;i<n;i++) {
+//     comp[i]=i;
+//     vector<int> v; 
+//     v.push_back(i);
+//     sommets[i] = v;
+//   }
 
-  for(int j=0;j<m;j++){
-    compi=comp[edgy[j][0]];
-    compj=comp[edgy[j][1]];
-    if(compi!=compj){
-        if(sommets[compi].size() > sommets[compj].size()){
-            swap(compi,compj);
-        }
+//   for(int j=0;j<m;j++){
+//     compi=comp[edgy[j][0]];
+//     compj=comp[edgy[j][1]];
+//     if(compi!=compj){
+//         if(sommets[compi].size() > sommets[compj].size()){
+//             swap(compi,compj);
+//         }
       
     
         
-      	for(int k=0;k<n;k++){
-      	  if(comp[k]==compi && vect.size()){
-            comp[k]=compj;
-          }
-        }
-      }
+//       	for(int k=0;k<n;k++){
+//       	  if(comp[k]==compi && vect.size()){
+//             comp[k]=compj;
+//           }
+//         }
+//       }
       
-      else{
-      	for(int k=0;k<n;k++){
-      	  if(comp[k]==compj){
-      	    comp[k]=vect.pushback();
-          }
-        }
-      }
-    }
-  }
-  for(int l=0;l<n;l++){
-    cout<<"comp("<<l<<")="<<comp[l]<<endl;
-  }
-}
+//       else{
+//       	for(int k=0;k<n;k++){
+//       	  if(comp[k]==compj){
+//       	    comp[k]=vect.pushback();
+//           }
+//         }
+//       }
+//     }
+//   }
+//   for(int l=0;l<n;l++){
+//     cout<<"comp("<<l<<")="<<comp[l]<<endl;
+//   }
+// }
 // A UTILISER EN EXAM
 void composanteopti(int n, int m, int edge[][2], int comp[]){
 	
@@ -182,8 +171,7 @@ int main(){
   int comp[n];       // comp[i] est le numero de la composante contenant i.
 
   grapheRandomv2(n,m,edgy);
-  composantes2(n,m,edgy,comp);
-  //composantes2(n,m,edgy,comp);
+  composantes(n,m,edgy,comp);
   ecritureTailles(n,m,comp);
 
   return EXIT_SUCCESS;
