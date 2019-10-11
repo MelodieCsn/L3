@@ -4,6 +4,7 @@
 #include <sys/wait.h>
 
 int main(int argc, char* argv[]){
+    
     pid_t pid;switch(pid = fork()){
         case -1:{ // echec du fork
             printf("Probleme : echec du fork") ;
