@@ -1,0 +1,23 @@
+package ClasseGe;
+import java.util.LinkedList;
+
+public class CPile implements IPile{
+	private LinkedList<A>;
+	boolean estvide(){
+		
+	}
+	void empile(A a){
+		
+	}
+	A depile(){
+		
+	}
+	int nbElements(){
+		
+	}
+	A sommet(){
+		
+	}
+	
+
+}

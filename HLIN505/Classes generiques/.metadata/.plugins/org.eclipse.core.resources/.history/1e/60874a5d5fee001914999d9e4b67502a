@@ -1,0 +1,16 @@
+package ClasseGe;
+
+public class main {
+	public static void main (String[] args){
+		CPile<String> c1= new CPile<String>();
+		
+		String a = "coucou";
+		String b = "bonswar";
+		String c = "bonne sieste";
+		
+		c1.empile(a);
+		c1.empile(b);
+		c1.empile(c);
+
+	}
+}

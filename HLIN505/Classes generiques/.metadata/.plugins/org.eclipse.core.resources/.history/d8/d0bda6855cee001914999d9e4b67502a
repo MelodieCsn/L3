@@ -1,0 +1,5 @@
+package ClasseGe;
+
+public interface IPile {
+
+}

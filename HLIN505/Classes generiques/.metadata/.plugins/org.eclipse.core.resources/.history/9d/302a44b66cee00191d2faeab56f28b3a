@@ -1,0 +1,9 @@
+package ClasseGe;
+
+public class FileAttentePrio<A extends ElementAvecPriorite> extends FileAttente<A> {
+
+	public FileAttentePrio(){
+		super();
+	}
+
+}

@@ -1,0 +1,7 @@
+package ClasseGe;
+
+public class main {
+	public static void main (String[] args){
+		CPile<String> c1= new CPile<String>();
+	}
+}

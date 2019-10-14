@@ -1,0 +1,21 @@
+package ClasseGe;
+
+public class CPile implements IPile{
+	boolean estvide(){
+		
+	}
+	void empile(A a){
+		
+	}
+	A depile(){
+		
+	}
+	int nbElements(){
+		
+	}
+	A sommet(){
+		
+	}
+	
+
+}
