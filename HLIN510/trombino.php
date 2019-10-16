@@ -60,7 +60,7 @@
         ?>
 <!-- PARTE SQL-->
 <?php 
-$req = "SELECT e.nom,prenom,statut,groupe,e.email,o.nom as optnom,e.numStageA ";
+$req = "SELECT e.nom,prenom,statut,groupe,e.email,o.nom as optnom,e.numStageA "; //requete de base 
 $req.= "FROM etudiant e LEFT JOIN options o ON e.opt=o.code ";
 
 // Si $options[] est vide (debut ou tout deselectionne : on select tous)
@@ -69,18 +69,20 @@ if (!empty($_POST['options']) && $nbopt=count($_POST['options'])){  // au moins 
   for ($i=1;$i<$nbopt;$i++){
     $ensemble.=",'{$_POST['options'][$i]}'"; // ajouter les autres options
   }
-  $req.= "WHERE e.opt IN $ensemble) ";
+  $req.= "WHERE e.opt IN $ensemble) "; //on rajoute les options dans la requete
 }
-if (!empty($_POST['order'])){
+if (!empty($_POST['order'])){ // si un ordre est sélectionné
  switch ($_POST['order']){	 
- case "option" : $req.= "ORDER BY optnom, nom, prenom;";break;
+ case "option" : $req.= "ORDER BY optnom, nom, prenom;";break;//on rajoute à la requête un ordre changé
  case "groupe" : $req.= "ORDER BY groupe, nom, prenom;";break;
  case "statut" : $req.= "ORDER BY statut, nom, prenom;";break;
  default : $req.= "ORDER BY nom, prenom;";break;
  }
-}else{ $req.= "ORDER BY nom, prenom;";
 }
-//echo $req;
+else{ $req.= "ORDER BY nom, prenom;";
+    echo "coucou";
+}
+echo $req;
 $res = $dbh->query($req) or die("Requête $req impossible");
 // Début de l'affichage
 $nbcol=8; // nombre de colonnes (étudiants) par ligne du tableau HTML
