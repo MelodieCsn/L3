@@ -60,54 +60,44 @@
         ?>
 <!-- PARTE SQL-->
 <?php 
-$req = "SELECT e.nom,prenom,statut,groupe,e.email,o.nom as optnom,e.numStageA "; //requete de base 
-$req.= "FROM etudiant e LEFT JOIN options o ON e.opt=o.code ";
+    $req = "SELECT e.nom,prenom,statut,groupe,e.email,o.nom as optnom,e.numStageA "; //requete de base 
+    $req.= "FROM etudiant e; 
+    // LEFT JOIN options o ON e.opt=o.code ";
 
-// Si $options[] est vide (debut ou tout deselectionne : on select tous)
-if (!empty($_POST['options']) && $nbopt=count($_POST['options'])){  // au moins 1 option selectionnée
-  $ensemble="('{$_POST['options'][0]}'" ; // 1ere option
-  for ($i=1;$i<$nbopt;$i++){
-    $ensemble.=",'{$_POST['options'][$i]}'"; // ajouter les autres options
-  }
-  $req.= "WHERE e.opt IN $ensemble) "; //on rajoute les options dans la requete
-}
-if (!empty($_POST['order'])){ // si un ordre est sélectionné
- switch ($_POST['order']){	 
- case "option" : $req.= "ORDER BY optnom, nom, prenom;";break;//on rajoute à la requête un ordre changé
- case "groupe" : $req.= "ORDER BY groupe, nom, prenom;";break;
- case "statut" : $req.= "ORDER BY statut, nom, prenom;";break;
- default : $req.= "ORDER BY nom, prenom;";break;
- }
-}
-else{ $req.= "ORDER BY nom, prenom;";
-    echo "coucou";
-}
-echo $req;
-$res = $dbh->query($req) or die("Requête $req impossible");
-// Début de l'affichage
-$nbcol=8; // nombre de colonnes (étudiants) par ligne du tableau HTML
-$numcol=0; //numéro de la colonne courante
-foreach ($res as $ligne){ // tq il reste des étud
-  if ($numcol==0){
-    echo '<tr align="center" valign="top">',"\n";
-  }
-# ETUDIANT
-#$c='<td><img width=50 height=80 src="' . $ligne["email"] . '.jpg"><br>';
-  $c='<td>'.$ligne["nom"].' '.$ligne["prenom"].'<br>';
-  $c=$c.'groupe '.$ligne["groupe"].' '.$ligne["statut"];
-  $c=$c.'<br><a href="mailto:'.$ligne["email"].'@info-ufr.univ-montp2.fr">';
-  $c=$c.$ligne["email"].'</a>';
-  $c.=($ligne["optnom"] ? '<br>option '.$ligne["optnom"] : '');
-  $c.=($ligne["numStageA"] ? '<br>stage A. '.$ligne["numStageA"] : '');
-  $c.='</td>' ;
-  echo $c,"\n";
-  $numcol++; // colonne suivante
-  if ($numcol==$nbcol){
-    echo "</tr>\n";   // fin de ligne
-    $numcol=0;      // réinit
-  }
-}
-
+    // Si $options[] est vide (debut ou tout deselectionne : on select tous)
+    if (!empty($_POST['options']) && $nbopt=count($_POST['options'])){  // au moins 1 option selectionnée
+        $ensemble="('{$_POST['options'][0]}'" ; // 1ere option
+        for ($i=1;$i<$nbopt;$i++){
+            $ensemble.=",'{$_POST['options'][$i]}'"; // ajouter les autres options
+        }
+        $req.= "WHERE e.opt IN $ensemble) "; //on rajoute les options dans la requete
+    }
+    if (!empty($_POST['order'])){ // si un ordre est sélectionné
+        switch ($_POST['order']){	 
+            case "option" : $req.= "ORDER BY optnom, nom, prenom;";break;//on rajoute à la requête un ordre changé
+            case "groupe" : $req.= "ORDER BY groupe, nom, prenom;";break;
+            case "statut" : $req.= "ORDER BY statut, nom, prenom;";break;
+            default : $req.= "ORDER BY nom, prenom;";break;
+        }
+    }
+    else{ $req.= "ORDER BY nom, prenom;";
+        //echo "coucou";
+    }
+    echo $req;
+    $res = $dbh->query($req) or die("Requête $req impossible");
+    
+    // Début de l'affichage
+    echo "<table> <br> <br>";
+    foreach( $res as $key ){
+        echo "<tr> 
+        <td> {$key['nom']} </td>
+        <td> {$key['prenom']} </td>
+        <td> {$key['numStageA']} </td>
+        <td> {$key['opt']} </td>
+        <td> {$key['opt.name']} </td>
+        <tr>";
+    }
+    echo "</table>";
 ?>
     </body>
 </html>
