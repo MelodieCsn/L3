@@ -1,0 +1,60 @@
+<html><head>
+        <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+            <style>
+                body { font-size: 18; font-weight: bold; }
+                img { width: 80px; height: 80px;}
+                .horizontal { float: left; margin: 10px; list-style: none; }
+            </style>
+    <script src="index_fichiers/jquery-3.js" type="text/javascript"></script>
+<script type="text/javascript">
+// On répertorie dans un objet les listes déjà chargées
+// en valeurs : 1 si la liste est affichée, 0 sinon
+    var listeChargees = {};
+// Ajout dans le DOM des nouveaux éléments / noeuds texte
+    function generationHTML(objet) {
+        let res= "\
+        <ul id='listePrincipale'>\
+            <li class='horizontal'> Christophe\
+                <img id='albums_Christophe' src='IMAGES/christophe.jpg' />\
+                <ul id='liste_albums_Christophe' />\
+            </li>\
+            <li class='horizontal'> Demis Roussos\
+                <img id='albums_Roussos' src='IMAGES/roussos.jpg' />\
+                <ul id='liste_albums_Roussos' />\
+            </li>\
+        </ul>";
+    return res;
+    }
+    function ouvertureFermeture() {
+    var id = $(this).attr(id);
+    
+    if (listeChargees.hasOwnProperty("#liste_"+id)) {
+        if (listeChargees["#liste_"+id] == 1) { // la liste est affichée, on la désaffiche
+            $("#"+id).hide;
+        }
+        else { // la liste est désaffichée, on l’affiche
+            $("#"+id).show;
+        }
+    }
+    else {
+// la liste n’est pes encore chargée -> $.getJSON()
+        $.getJSON()
+    }
+    
+    };
+
+    $().ready(function() {
+// création de la liste de plus haut niveau
+        $("body").append("<ul id='listePrincipale' />");
+        $.getJSON('JSON/chanteurs.json', function(data) {
+            $.each(data, function(indice, objet) {
+                let html = generationHTML(objet);
+                $("#listePrincipale").append(html);
+                $(document.body).on('click', '#'+objet.lien, ouvertureFermeture);
+            });
+        });
+    });
+</script>
+</head> <body>
+</body>
+</html>
