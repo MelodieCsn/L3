@@ -12,10 +12,43 @@ const int M=(N*(N-1))/2;
   
 typedef struct coord{int abs; int ord;} coord;
 
+void affichageGraphique(int n, int m, coord point[], int tab[][2], string name){
+  ofstream output;                           
+  output.open(name,ios::out);
+  output << "%!PS-Adobe-3.0" << endl;
+  output << "%%BoundingBox: 0 0 612 792" << endl;
+  output << endl;  
+  for(int i=0;i<n;i++)
+    {
+      output << point[i].abs << " " << point[i].ord << " 3 0 360 arc" <<endl;
+      output << "0 setgray" <<endl;
+      output << "fill" <<endl;
+      output << "stroke"<<endl;
+      output << endl;
+    }
+  output << endl;
+  
+  int taille = 0;
+  if ( name == "Arbre.ps"){
+    taille = n;
+  }
+  else{
+    taille = m;
+  }
+  for(int i=0;i<taille;i++){
+    output << point[tab[i][0]].abs << " " << point[tab[i][0]].ord << " moveto" << endl;
+    output << point[tab[i][1]].abs << " " << point[tab[i][1]].ord << " lineto" << endl;
+    output << "stroke" << endl;
+    output << endl;
+  }
+  output << "showpage";
+  output << endl;
+}
+
 //CREATION DES POINTS AVEC COORDONNEES RANDOM
 
 void pointRandom(int n,coord point[]){
-
+  cout << "\n## AFFICHAGE DES POINTS" << endl;
   srand(time(NULL));
   for (int i = 0; i < n; i++)
   {
@@ -55,6 +88,17 @@ void affichageAllVector(int n, vector<int> v[] ){
   }
 }
 
+// FONCTION D'AFFICHAGE DE DISTANCES
+void affichagedistances(int n, coord point[]){
+  cout << "\n## AFFICHAGE DES DISTANCES" << endl;
+  for(int i=0; i<n;i++){
+    for(int j=0; j<i+1;j++){
+        cout<<"distance entre (" << point[i].abs << "," << point[i].ord << ") et (" << point[j].abs << "," << point[j].ord << ") est "<<distance(point[i],point[j])<<endl;
+    }
+  }
+}
+
+
 // FONCTION QUI REMPLI LE VECTEUR DES VOISINS SELON LA DISTANCE ENTRE LES POINTS
 
 void voisins(int n,int dmax,coord point[],vector<int> voisin[],int &m){
@@ -85,55 +129,54 @@ for(int i=0; i<n;i++){
 }
 
 
-void affichageGraphique(int n,int m,coord point[],int arete[][2],string name){
-
-// Cree le fichier de nom name qui affiche
-// les points et l'arbre 
-  ofstream output;
-  output.open(name, ios::out);
-  output << "%!PS-Adobe-3.0" << endl;
-  output << "%%BoundingBox: 0 0 612 792" << endl;
-  output << endl;
-  for (int i = 0; i < n; i++)
-  {
-    output << point[i].abs << " " << point[i].ord << " 3 0 360 arc" << endl;
-    output << "0 setgray" << endl;
-    output << "fill" << endl;
-    output << "stroke" << endl;
-    output << endl;
-  }
-  output << endl;
-  for (int i = 0; i < n; i++)
-  {
-    output << point[arete[i][0]].abs << " " << point[arete[i][0]].ord
-           << " moveto" << endl;
-    output << point[arete[i][1]].abs << " " << point[arete[i][1]].ord
-           << " lineto" << endl;
-    output << "stroke" << endl;
-    output << endl;
-  }
-  output << "showpage";
-  output << endl;
-}
-
-
-bool existe(int n,int dis[],bool traite[],int &x){
+bool existe(int n,int d[],int traite[],int &x){ // true si on trouve un x pas encore traité
+  int min=1000001;
   bool res= false;
   for(int i=0; i<n; i++){
-    if(traite[i]==0 && dis[i]<)
+    if(traite[i]==0){
+      res=true;
+      if(d[i]<min){
+        x=i;
+      }
+    }
   }
-
+  return res;
 }
+
 void dijkstra(int n,vector<int> voisin[],coord point[],int pere[]){
   int racine = 0;
   int d[n];
+  int traite[n];
+  int x;
+
   for(int i=0; i<n; i++){
-    d[i]=0;
+    d[i]=1000000;
     traite[i]=0;
   }
-
+  pere[0] = racine;
+  d[racine] = 0;
+  
+  while(existe(n,d,traite,x)){
+    traite[x]=1;
+    for(int j=0;j<voisin[x].size();j++){
+      if(traite[j]==0 && (d[voisin[x][j]] > d[x]+distance(point[x],point[voisin[x][j]])) ) {
+        d[voisin[x][j]]=d[x]+distance(point[x],point[voisin[x][j]]);
+        pere[voisin[x][j]]=x;
+      }
+    }
+  }
 }
-int construireArbre(int n,int arbre[][2],int pere[]);
+
+
+int construireArbre(int n,int arbre[][2],int pere[]){
+  int k = 0;
+  for(int i = 0; i < n; i++){
+    arbre[i][0] = i;
+    arbre[i][1] = pere[i];
+    k++;
+  }
+  return k;
+}
 
 int
 main()
@@ -152,7 +195,11 @@ main()
   pointRandom(n,point);
   voisins(n,dmax,point,voisin,m);
   affichageAllVector(n,voisin);
+  affichagedistances(n,point);
   voisins2arete(n,voisin,arete);
+  dijkstra(n,voisin,point,pere);
+  construireArbre(n, arbre, pere);
+
   affichageGraphique(n,m,point, arete,"affichage.ps");
   return EXIT_SUCCESS;
 }
