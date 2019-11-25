@@ -1,0 +1,8 @@
+package FabriquePersos;
+
+public class PersonnageInvisible extends Personnage{
+	public boolean Invisible;
+	public int tpsInvisible;
+	public int Tpsvisible;
+	
+}

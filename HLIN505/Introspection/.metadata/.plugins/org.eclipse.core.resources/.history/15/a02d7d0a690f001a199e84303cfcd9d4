@@ -1,0 +1,8 @@
+package FabriquePersos;
+
+public class Personnage {
+	String nom;
+	int nbPts;
+	int nbVies;
+
+}

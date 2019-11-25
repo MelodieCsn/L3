@@ -1,0 +1,30 @@
+package FabriquePersos;
+
+public class PersonnageInvisible extends Personnage{
+	public boolean invisible;
+	public int tpsInvisible;
+	public int Tpsvisible;
+	
+	public boolean isInvisible() {
+		return invisible;
+	}
+	public void setInvisible(boolean invisible) {
+		this.invisible = invisible;
+	}
+	public int getTpsInvisible() {
+		return tpsInvisible;
+	}
+	public void setTpsInvisible(int tpsInvisible) {
+		this.tpsInvisible = tpsInvisible;
+	}
+	public int getTpsvisible() {
+		return Tpsvisible;
+	}
+	public void setTpsvisible(int tpsvisible) {
+		Tpsvisible = tpsvisible;
+	}
+	
+	public PersonnageInvisible(String nom,int nbPts,int nbVies, boolean Invisible)
+	
+	
+}
