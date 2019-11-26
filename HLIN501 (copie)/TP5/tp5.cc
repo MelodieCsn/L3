@@ -99,11 +99,39 @@ void printfermeture(int fermeture[][N]){
 	}
 }
 
-compFortConnexe(int n, int fermeture[][N]){
-  for(int i=0; i<n; i++){
-    
-  }
+void compFortConnexe(int n, int fermeture[][N]){
+  vector<int> comp[n];
+    for (int i = 0; i < n; i++)
+    {
+      for (int j = 0; j < n; j++)
+      {
+          if ((fermeture[i][j] == 1) && (fermeture[j][i] == 1))
+          {
+              comp[i].push_back(j);
+          }
+      }
+    }
+    cout<<"Les composantes fortements connexes sont :";
+    for (int i = 0; i < n; i++)
+    {
+        // On regarde si le sommet est une source
+        if ( fermeture[i][i] == 0 ){
+          cout << "{" << i << "} ";   
+        }
+
+        if (!comp[i].empty() && (comp[i][0] >= i))
+        {
+            cout<<"{ ";
+            for (int j = 0; j < comp[i].size(); j++)
+            {
+                cout << comp[i][j] << " ";
+            }
+            cout<<"}";
+        }
+    }
+    cout << endl;
 }
+
 
 int
 main()
@@ -131,6 +159,7 @@ main()
   // itineraire(0,4,chemin);
   fermetureTransitive(arc,fermeture);
   printfermeture(fermeture);
+  compFortConnexe(N,fermeture);
 
   return EXIT_SUCCESS;
 }
