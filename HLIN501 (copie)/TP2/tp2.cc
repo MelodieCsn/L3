@@ -45,10 +45,11 @@ void affichageGraphique(int n, coord point[], int arbre[][2])
 void pointRandom(int n, coord point[]) //CRÉE UN POINT AUX COORDONNEES ALEATOIRES
 {
   srand(time(NULL));
-  for (int i = 0; i < n; i++)
+  for (int i = 0; i < 60 ; i++) //remplacer n par 60 pour exercice 2 
   {
-    point[i].abs = rand() % 613;
-    point[i].ord = rand() % 793;
+    point[i].abs = floor(300+200*cos(i));
+    point[i].ord = floor(400+150*(sin(i)-cos(i)));
+    
     //cout << "(" << point[i].abs << "," << point[i].ord << ")" << endl;
   }
 }
@@ -62,7 +63,7 @@ void distances(int n, int m, coord point[], int edge[][3])
     {
       edge[k][0] = i;
       edge[k][1] = j;
-      edge[k][2] = abs(point[j].abs - point[i].abs) + abs(point[j].ord - point[i].ord);
+      edge[k][2] = abs(point[j].abs - point[i].abs) + abs(point[j].ord - point[i].ord);//(point[i].abs-point[j].abs)*(point[i].abs-point[j].abs);
       //cout << "la distance entre " << edge[k][0] << " et " << edge[k][1] << " est " << edge[k][2] << endl;
       k++;
     }

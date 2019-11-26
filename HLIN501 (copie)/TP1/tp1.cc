@@ -53,7 +53,7 @@ void composantes(int n, int m, int edgy[][2], int comp[]){ //non optimisé
   for(int j=0;j<m;j++){
     compi=comp[edgy[j][0]];
     compj=comp[edgy[j][1]];
-    if(compi!=compj){
+    if(compi>compj){
       int aux=compi;
       for(int k=0;k<n;k++){
       	if(comp[k]==aux){
@@ -131,7 +131,7 @@ int main(){
   int comp[n];       // comp[i] est le numero de la composante contenant i.
 
   grapheRandomv2(n,m,edgy);
-  composanteopti(n,m,edgy,comp);
+  composantes(n,m,edgy,comp);
   ecritureTailles(n,m,comp);
 
   return EXIT_SUCCESS;

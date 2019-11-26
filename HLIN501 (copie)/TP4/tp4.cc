@@ -50,22 +50,33 @@ void affichageGraphique(int n, int m, coord point[], int tab[][2], string name){
 void pointRandom(int n,coord point[]){
   cout << "\n## AFFICHAGE DES POINTS" << endl;
   srand(time(NULL));
-  for (int i = 0; i < n; i++)
+  for (int i = 0; i < 10; i++)
   {
-    point[i].abs = rand() % 613;
-    point[i].ord = rand() % 793;
-    cout << "Sommet " << i << " : ";
-    cout << "(" << point[i].abs << "," << point[i].ord << ")" << endl;
+    for(int j=0; j<10;j++){
+      point[i].abs = 60*i;
+      point[i].ord = 60*j;
+      cout << "Sommet " << i << " : ";
+      cout << "(" << point[i].abs << "," << point[i].ord << ")" << endl;
+    }
   }
 }
 
 // CALCUL DES DISTANCES ENTRE DEUX POINTS
 
 float distance(coord p1,coord p2){
-  float x = abs(p2.abs-p1.abs)*abs(p2.abs-p1.abs);
-  float y = abs(p2.ord-p1.ord)*abs(p2.ord-p1.ord);
-  float res = sqrt(x+y);
-  return res;
+  float res;
+  for (int i = 0; i < 10; i++)
+  {
+    for(int j=0; j<10;j++){
+      res=(abs(i+1-i)+abs(j+1-j))*(abs(i+1-i)+abs(j+1-j));
+    }
+  }
+
+
+  // float x = abs(p2.abs-p1.abs)*abs(p2.abs-p1.abs);
+  // float y = abs(p2.ord-p1.ord)*abs(p2.ord-p1.ord);
+  // float res = sqrt(x+y);
+  // return res;
 }
 
 // FONCTIONS D'AFFICHAGE DES VECTEURS
@@ -121,8 +132,8 @@ int cpt=0;
 for(int i=0; i<n;i++){
   for(int j=0; j<voisin[i].size();j++){
     if(i<voisin[i][j]){
-    arete[cpt][0]=i;
-    arete[cpt][1]=voisin[i][j];
+    arete[cpt][0]=i+1;
+    arete[cpt][1]=voisin[i+1][j+1];
     cpt++;
     }
   }

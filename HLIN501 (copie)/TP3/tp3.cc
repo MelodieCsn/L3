@@ -68,6 +68,17 @@ void afficheNiveau(int n, int niveau[]){
     else{ nbNiv[niveau[i]]++; }
   }
 
+  //EXERCICE 4 NIVEAUMAX
+  int niveauMax(int niveau[]){
+    int max=0;
+    for(int i=0;i<n;i++){
+      if(niveau[i]>max){
+        max=niveau[i];
+      }
+    }
+    return max;
+  }
+
   //Affichage des résultats
    
   for( int i=1; i < n; i++){

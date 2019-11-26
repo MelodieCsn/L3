@@ -202,6 +202,6 @@ main()
   dijkstra(n,voisin,point,pere);
   construireArbre(n, arbre, pere);
 
-  affichageGraphique(n,m,point, arete,"affichage.ps");
+  affichageGraphique(n,m,point, arbre,"affichage.ps");
   return EXIT_SUCCESS;
 }
