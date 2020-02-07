@@ -1,44 +1,17 @@
 CC = g++
-CFLAGS = -Wall -pedantic -ansi
-SOURCE = $(wildcard *.cpp)
+CFLAGS = -W -Wall
+SRCS = main.cpp CompteBancaire.cpp
+OBJS = $(SRCS:.cc = .o)
+BIN = tp2
+EXT = *.o
 
-MSQ = @
-RM = $(MSQ)rm -f
-CLEAR = $(MSQ)clear
+all: $(OBJS)
+	clear;
+	clear;
+	$(CC) $(OBJS) $(CFLAGS) -o $(BIN)
 
-MSG = $(MSQ)echo 
-MSG1 = $(MSG) "Compilation de $^ ==> $@"
-MSG_OK = $(MSG) ".......OK"
+%.o: %.cpp
+	$(CC) -c $< -o $@ $(CFLAGS)
 
-all : main vers strophe
-
-#clean
-cls :
-	$(RM) *.o
-	$(RM) $(SOURCE:.cpp=)
-
-clean : cls
-	$(MSG) "Cleanup is running...."
-	$(CLEAR)
-	$(MSG_OK)
-
-#Compilation
-vers : vers.cc
-	$(MSG1)
-	$(CC) $(CFLAGS) $^ -o $@
-	$(CLEAR)
-	$(MSG_OK)
-
-
-#Compilation
-strophe : strophe.cc
-	$(MSG1)
-	$(CC) $(CFLAGS) $^ -o $@
-	$(CLEAR)
-	$(MSG_OK)
-
-vers : main.cc
-	$(MSG1)
-	$(CC) $(CFLAGS) $^ -o $@
-	$(CLEAR)
-	$(MSG_OK)
+clean:
+	rm -f $(EXT) $(BIN)
