@@ -1,6 +1,6 @@
 CC = g++
 CFLAGS = -W -Wall
-SRCS = main.cpp CompteBancaire.cpp
+SRCS = main.cpp bateaux.cpp
 OBJS = $(SRCS:.cc = .o)
 BIN = tp2
 EXT = *.o

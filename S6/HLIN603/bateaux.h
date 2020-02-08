@@ -1,6 +1,7 @@
+#include <string>
 class Bateau
 {
-protected:
+public:
 	int navZone;
 public:
 	Bateau();
@@ -8,50 +9,61 @@ public:
 	virtual ~Bateau();
 };
 
-class BateauAaubes : public Bateau
+class BateauAaubes : public virtual Bateau
 {
 protected:
-	String ModeleEntrainementAubes;
+	int ModeleEntrainementAubes;
 public:
 	BateauAaubes();
-	BateauAaubes(String modeE);
 	virtual ~BateauAaubes();
 };
 
-class BateauPlage : public Bateau
+class BateauPlage : public virtual Bateau
 {
 protected:
 	int DureeLocation;
 public:
 	BateauPlage();
-	BateauPlage(int d);
 	virtual ~BateauPlage();
 };
 
-class PetitMultiCoques : public BateauPlage
+class PetitMultiCoques : public virtual BateauPlage
 {
 protected:
 	int nbrCoques;
 public:
 	PetitMultiCoques();
-	PetitMultiCoques(int nbr);
 	virtual ~PetitMultiCoques();
 };
 
-class BPSansMoteur : public BateauPlage
+class BPSansMoteur : public virtual BateauPlage
 {
 protected:
-	String ModePropulsion;
+	int ModePropulsion;
 public:
 	BPSansMoteur();
-	BPSansMoteur(String modeP);
 	virtual ~BPSansMoteur();
 };
 
-class CompteDepotRemunere : virtual public CompteDepot, virtual public CompteRemunere
+class BateauAaubeEtPedales : public virtual BateauAaubes , public virtual BPSansMoteur
+{
+protected:
+	int NbrePedales;
+public:
+	BateauAaubeEtPedales();
+	virtual ~BateauAaubeEtPedales();
+};
+
+class PetitCatamaran : virtual public PetitMultiCoques
 {
 public:
-	CompteDepotRemunere();
-	CompteDepotRemunere(float s);
-	virtual ~CompteDepotRemunere();
+	PetitCatamaran();
+	virtual ~PetitCatamaran();
+};
+
+class Pedalo : virtual public PetitCatamaran, virtual public BateauAaubeEtPedales
+{
+public:
+	Pedalo();
+	virtual ~Pedalo();
 };

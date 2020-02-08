@@ -1,5 +1,7 @@
 #include <iostream>
-#include "compteBancaire.h"
+#include "bateaux.h"
+#include<string>
+
 
 // ne jamais manipuler les objets directement, toujours utiliser les adresses
 // pointeurs partout, virtual partout
